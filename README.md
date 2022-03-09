@@ -10,3 +10,22 @@
 
 ## ✔Algorithms
 - [순열과 조합](https://jun-choi-4928.medium.com/javascript%EB%A1%9C-%EC%88%9C%EC%97%B4%EA%B3%BC-%EC%A1%B0%ED%95%A9-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-21df4b536349) `LV1 010.js`
+```javascript
+function getCombinations(arr, cnt) { // 조합
+  const result = [];
+  if (cnt === 1) return arr.map((value) => [value]);
+
+  arr.forEach((fixed, index, origin) => {
+    const rest = origin.slice(index + 1);
+    const combinations = getCombinations(rest, cnt - 1);
+    const attached = combinations.map((combination) => [fixed, ...combination]);
+    result.push(...attached);
+  });
+
+  return result;
+}
+```
+- 숫자 정렬
+```javascript
+arr.sort((a, b) => a - b);
+```
